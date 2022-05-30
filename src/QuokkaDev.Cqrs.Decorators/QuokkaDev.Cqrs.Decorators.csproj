@@ -34,8 +34,8 @@
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="11.0.0" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.0.0" />
-    <PackageReference Include="QuokkaDev.Cqrs" Version="2.0.0" />
-    <PackageReference Include="QuokkaDev.Cqrs.Abstractions" Version="1.0.2" />
+    <PackageReference Include="QuokkaDev.Cqrs" Version="3.0.0" />
+    <PackageReference Include="QuokkaDev.Cqrs.Abstractions" Version="3.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
     <PackageReference Include="Roslynator.Analyzers" Version="4.1.0">

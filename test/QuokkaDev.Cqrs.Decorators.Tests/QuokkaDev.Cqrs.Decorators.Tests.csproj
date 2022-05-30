@@ -14,8 +14,8 @@
 
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="6.6.0" />
-    <PackageReference Include="QuokkaDev.Cqrs" Version="2.0.0" />
-    <PackageReference Include="QuokkaDev.Cqrs.Abstractions" Version="1.0.2" />
+    <PackageReference Include="QuokkaDev.Cqrs" Version="3.0.0" />
+    <PackageReference Include="QuokkaDev.Cqrs.Abstractions" Version="3.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
