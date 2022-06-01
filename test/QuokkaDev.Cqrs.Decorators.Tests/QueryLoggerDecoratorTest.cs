@@ -1,8 +1,8 @@
-﻿using QuokkaDev.Cqrs.Abstractions;
+﻿using Microsoft.Extensions.Logging;
+using Moq;
+using QuokkaDev.Cqrs.Abstractions;
 using QuokkaDev.Cqrs.Decorators;
 using QuokkaDev.Cqrs.Tests.Utilities;
-using Microsoft.Extensions.Logging;
-using Moq;
 using System;
 using System.Threading.Tasks;
 using Xunit;

@@ -43,6 +43,16 @@ namespace QuokkaDev.Cqrs.Decorators.Tests
 
     public class MyCustomException : Exception
     {
+        public MyCustomException() : base()
+        {
+        }
 
+        public MyCustomException(string? message) : base(message)
+        {
+        }
+
+        public MyCustomException(string? message, Exception? innerException) : base(message, innerException)
+        {
+        }
     }
 }
