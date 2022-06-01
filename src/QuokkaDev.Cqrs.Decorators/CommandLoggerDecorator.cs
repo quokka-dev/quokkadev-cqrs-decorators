@@ -1,6 +1,6 @@
-﻿using QuokkaDev.Cqrs.Abstractions;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using QuokkaDev.Cqrs.Abstractions;
 
 namespace QuokkaDev.Cqrs.Decorators
 {
@@ -22,7 +22,8 @@ namespace QuokkaDev.Cqrs.Decorators
 
         public Task<TCommandResult> Dispatch<TCommand, TCommandResult>(TCommand command, CancellationToken cancellation)
         {
-            if(command == null) {
+            if(command == null)
+            {
                 throw new ArgumentException("Command is null");
             }
             return DispatchInternal<TCommand, TCommandResult>(command, cancellation);
@@ -36,14 +37,16 @@ namespace QuokkaDev.Cqrs.Decorators
         private async Task<TCommandResult> DispatchInternal<TCommand, TCommandResult>(TCommand command, CancellationToken cancellation)
         {
             logger.LogInformation("Handling {commandName}", typeof(TCommand).Name);
-            if(settings.IsRequestLoggingEnabled && command != null) {
+            if(settings.IsRequestLoggingEnabled && command != null)
+            {
                 logger.LogObject(command);
             }
 
             var response = await dispatcher.Dispatch<TCommand, TCommandResult>(command, cancellation);
 
             logger.LogInformation("Handled {commandResult}", typeof(TCommandResult).Name);
-            if(settings.IsResponseLoggingEnabled && response != null) {
+            if(settings.IsResponseLoggingEnabled && response != null)
+            {
                 logger.LogObject(response);
             }
 

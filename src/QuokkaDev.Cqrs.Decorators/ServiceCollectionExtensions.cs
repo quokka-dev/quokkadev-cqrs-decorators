@@ -1,7 +1,7 @@
-﻿using QuokkaDev.Cqrs.Abstractions;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using QuokkaDev.Cqrs.Abstractions;
 
 namespace QuokkaDev.Cqrs.Decorators
 {
