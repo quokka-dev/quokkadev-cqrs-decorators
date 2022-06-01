@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
-using QuokkaDev.Cqrs.Abstractions;
-using QuokkaDev.Cqrs.Decorators;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Moq;
+using QuokkaDev.Cqrs.Abstractions;
+using QuokkaDev.Cqrs.Decorators;
 using System;
 using System.Collections.Generic;
 using System.Threading;

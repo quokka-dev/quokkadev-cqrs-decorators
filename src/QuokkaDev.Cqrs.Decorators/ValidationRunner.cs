@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using QuokkaDev.Cqrs.Abstractions.Exceptions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using QuokkaDev.Cqrs.Abstractions.Exceptions;
 using System.Reflection;
 
 namespace QuokkaDev.Cqrs.Decorators
@@ -56,7 +56,7 @@ namespace QuokkaDev.Cqrs.Decorators
             }
             else
             {
-                Exception custom = Activator.CreateInstance(wrapperExceptionType) as Exception;
+                Exception? custom = Activator.CreateInstance(wrapperExceptionType) as Exception;
                 Type exType = typeof(Exception);
                 var messageField = exType.GetField("_message", BindingFlags.NonPublic | BindingFlags.Instance);
                 messageField?.SetValue(custom, innerException.Message);
