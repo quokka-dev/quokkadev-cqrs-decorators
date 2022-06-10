@@ -50,6 +50,11 @@ namespace QuokkaDev.Cqrs.Decorators
 
         public Exception ThrowException(BaseCqrsException innerException, Type? wrapperExceptionType)
         {
+            return throwException(innerException, wrapperExceptionType);
+        }
+
+        private static Exception throwException(BaseCqrsException innerException, Type? wrapperExceptionType)
+        {
             if(wrapperExceptionType is null)
             {
                 return innerException;

@@ -140,13 +140,10 @@ namespace QuokkaDev.Cqrs.Tests.Utilities
         /// </summary>
         public void AddQueryValidationDecorator(Type? customExceptionType = null)
         {
-            Action<QueryValidationSettings>? settings = (s) => { };
+            Action<QueryValidationSettings>? settings = (_) => { };
             if(customExceptionType != null)
             {
-                settings = (s) =>
-                {
-                    s.CustomExceptionType = customExceptionType;
-                };
+                settings = (s) => s.CustomExceptionType = customExceptionType;
             }
 
             services.AddQueryValidation(settings);
@@ -158,16 +155,85 @@ namespace QuokkaDev.Cqrs.Tests.Utilities
         /// </summary>
         public void AddCommandValidationDecorator(Type? customExceptionType = null)
         {
-            Action<CommandValidationSettings>? settings = (s) => { };
+            Action<CommandValidationSettings>? settings = (_) => { };
             if(customExceptionType != null)
             {
-                settings = (s) =>
-                {
-                    s.CustomExceptionType = customExceptionType;
-                };
+                settings = (s) => s.CustomExceptionType = customExceptionType;
             }
             services.AddCommandValidation(settings);
             services.AddValidatorsFromAssembly(typeof(DependencyInjectionContext).Assembly);
+        }
+
+        public Mock<ILogger<CommandLoggerDecorator>> CombineCommandLoggingAndValidation(Type? customExceptionType = null)
+        {
+            Action<CommandValidationSettings>? settings = (_) => { };
+            if(customExceptionType != null)
+            {
+                settings = (s) => s.CustomExceptionType = customExceptionType;
+            }
+
+            services.AddCommandLogging(settings =>
+            {
+                settings.IsRequestLoggingEnabled = true;
+                settings.IsResponseLoggingEnabled = true;
+            }).AndCommandValidation(settings);
+
+            services.AddValidatorsFromAssembly(typeof(DependencyInjectionContext).Assembly);
+            return RegisterMockLogger<CommandLoggerDecorator>();
+        }
+
+        public Mock<ILogger<CommandLoggerDecorator>> CombineCommandValidationAndLogging(Type? customExceptionType = null)
+        {
+            Action<CommandValidationSettings>? settings = (_) => { };
+            if(customExceptionType != null)
+            {
+                settings = (s) => s.CustomExceptionType = customExceptionType;
+            }
+
+            services.AddCommandValidation(settings).AndCommandLogging(settings =>
+            {
+                settings.IsRequestLoggingEnabled = true;
+                settings.IsResponseLoggingEnabled = true;
+            });
+
+            services.AddValidatorsFromAssembly(typeof(DependencyInjectionContext).Assembly);
+            return RegisterMockLogger<CommandLoggerDecorator>();
+        }
+
+        public Mock<ILogger<QueryLoggerDecorator>> CombineQueryLoggingAndValidation(Type? customExceptionType = null)
+        {
+            Action<QueryValidationSettings>? settings = (_) => { };
+            if(customExceptionType != null)
+            {
+                settings = (s) => s.CustomExceptionType = customExceptionType;
+            }
+
+            services.AddQueryLogging(settings =>
+            {
+                settings.IsRequestLoggingEnabled = true;
+                settings.IsResponseLoggingEnabled = true;
+            }).AndQueryValidation(settings);
+
+            services.AddValidatorsFromAssembly(typeof(DependencyInjectionContext).Assembly);
+            return RegisterMockLogger<QueryLoggerDecorator>();
+        }
+
+        public Mock<ILogger<QueryLoggerDecorator>> CombineQueryValidationAndLogging(Type? customExceptionType = null)
+        {
+            Action<QueryValidationSettings>? settings = (_) => { };
+            if(customExceptionType != null)
+            {
+                settings = (s) => s.CustomExceptionType = customExceptionType;
+            }
+
+            services.AddQueryValidation(settings).AndQueryLogging(settings =>
+            {
+                settings.IsRequestLoggingEnabled = true;
+                settings.IsResponseLoggingEnabled = true;
+            });
+
+            services.AddValidatorsFromAssembly(typeof(DependencyInjectionContext).Assembly);
+            return RegisterMockLogger<QueryLoggerDecorator>();
         }
     }
 }
