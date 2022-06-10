@@ -1,13 +1,12 @@
 ﻿using Microsoft.Extensions.Logging;
 using Moq;
 using QuokkaDev.Cqrs.Abstractions;
-using QuokkaDev.Cqrs.Decorators;
 using QuokkaDev.Cqrs.Tests.Utilities;
 using System;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace QuokkaDev.CQRS.Tests
+namespace QuokkaDev.Cqrs.Decorators.Tests
 {
     public class QueryLoggerDecoratorTest
     {
