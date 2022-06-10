@@ -93,7 +93,7 @@ public class MyCustomDecorator : IQueryDispatcher
     }
 }
 ```
-For register your custom decorator you must decorate the `IQueryDispatcher` interface. You can do it using [Scrutor](https://github.com/khellang/Scrutor) (QuokkaDev.Cqrs.Decorators use Scrutor in his extensions method)
+For register your custom decorator you can decorate the `IQueryDispatcher` interface. You can do it using [Scrutor](https://github.com/khellang/Scrutor) (QuokkaDev.Cqrs.Decorators use Scrutor in his extensions method)
 #### **`program.cs`**
 ```csharp
 builder.Services.AddCQRS(Assembly.GetExecutingAssembly());
