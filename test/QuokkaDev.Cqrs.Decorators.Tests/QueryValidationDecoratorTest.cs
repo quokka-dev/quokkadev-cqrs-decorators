@@ -1,14 +1,13 @@
 ﻿using FluentAssertions;
 using QuokkaDev.Cqrs.Abstractions;
 using QuokkaDev.Cqrs.Abstractions.Exceptions;
-using QuokkaDev.Cqrs.Decorators;
 using QuokkaDev.Cqrs.Tests.Utilities;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace QuokkaDev.CQRS.Tests
+namespace QuokkaDev.Cqrs.Decorators.Tests
 {
     public class QueryValidationDecoratorTest
     {
