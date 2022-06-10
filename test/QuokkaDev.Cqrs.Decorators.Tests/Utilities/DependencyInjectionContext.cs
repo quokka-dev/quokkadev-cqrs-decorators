@@ -196,7 +196,6 @@ namespace QuokkaDev.Cqrs.Tests.Utilities
                 settings.IsResponseLoggingEnabled = true;
             });
 
-
             services.AddValidatorsFromAssembly(typeof(DependencyInjectionContext).Assembly);
             return RegisterMockLogger<CommandLoggerDecorator>();
         }
@@ -232,7 +231,6 @@ namespace QuokkaDev.Cqrs.Tests.Utilities
                 settings.IsRequestLoggingEnabled = true;
                 settings.IsResponseLoggingEnabled = true;
             });
-
 
             services.AddValidatorsFromAssembly(typeof(DependencyInjectionContext).Assembly);
             return RegisterMockLogger<QueryLoggerDecorator>();
