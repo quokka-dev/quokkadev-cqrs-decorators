@@ -31,7 +31,6 @@ namespace QuokkaDev.Cqrs.Decorators.Tests
             context.BuildServiceProvider();
             ICommandDispatcher commandDispatcher = context.GetService<ICommandDispatcher>();
 
-
             var request = new TestCommand() { Message = "" }; // Invalid command
 
             // Act
@@ -65,7 +64,6 @@ namespace QuokkaDev.Cqrs.Decorators.Tests
 
             context.BuildServiceProvider();
             ICommandDispatcher commandDispatcher = context.GetService<ICommandDispatcher>();
-
 
             var request = new TestCommand() { Message = "" }; // Invalid command
 
@@ -101,7 +99,6 @@ namespace QuokkaDev.Cqrs.Decorators.Tests
             context.BuildServiceProvider();
             IQueryDispatcher QueryDispatcher = context.GetService<IQueryDispatcher>();
 
-
             var request = new TestQuery() { Message = "" }; // Invalid Query
 
             // Act
@@ -135,7 +132,6 @@ namespace QuokkaDev.Cqrs.Decorators.Tests
 
             context.BuildServiceProvider();
             IQueryDispatcher QueryDispatcher = context.GetService<IQueryDispatcher>();
-
 
             var request = new TestQuery() { Message = "" }; // Invalid Query
 
