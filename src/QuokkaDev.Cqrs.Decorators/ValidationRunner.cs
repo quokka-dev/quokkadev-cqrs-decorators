@@ -2,7 +2,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using QuokkaDev.Cqrs.Abstractions.Exceptions;
-using System.Reflection;
 
 namespace QuokkaDev.Cqrs.Decorators
 {
@@ -45,29 +44,6 @@ namespace QuokkaDev.Cqrs.Decorators
             else
             {
                 logger.LogTrace("No validators found for requst {request}", typeof(TRequest).Name);
-            }
-        }
-
-        public Exception ThrowException(BaseCqrsException innerException, Type? wrapperExceptionType)
-        {
-            return throwException(innerException, wrapperExceptionType);
-        }
-
-        private static Exception throwException(BaseCqrsException innerException, Type? wrapperExceptionType)
-        {
-            if(wrapperExceptionType is null)
-            {
-                return innerException;
-            }
-            else
-            {
-                Exception? custom = Activator.CreateInstance(wrapperExceptionType) as Exception;
-                Type exType = typeof(Exception);
-                var messageField = exType.GetField("_message", BindingFlags.NonPublic | BindingFlags.Instance);
-                messageField?.SetValue(custom, innerException.Message);
-                var innerExField = exType.GetField("_innerException", BindingFlags.NonPublic | BindingFlags.Instance);
-                innerExField?.SetValue(custom, innerException);
-                return custom!;
             }
         }
     }

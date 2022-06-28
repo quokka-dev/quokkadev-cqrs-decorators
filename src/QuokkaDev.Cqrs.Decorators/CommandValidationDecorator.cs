@@ -34,7 +34,7 @@ namespace QuokkaDev.Cqrs.Decorators
             }
             catch(BaseCqrsException bex)
             {
-                throw validationRunner.ThrowException(bex, settings.CustomExceptionType);
+                throw bex.WrapException(settings.CustomExceptionType);
             }
         }
 
